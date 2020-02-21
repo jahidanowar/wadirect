@@ -72,9 +72,19 @@ class _MyHomePageState extends State<MyHomePage> {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
           ),
-          Center(
+          Container(
+            margin: EdgeInsets.all(30.0),
             child: Form(
-              
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  phoneNumberField(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  messageField()
+                ],
+              ),
             )
           ),
         ],
@@ -84,6 +94,29 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.arrow_forward),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget phoneNumberField() {
+    return TextFormField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: "Phone No. with Country Code",
+          hintText: "916295790000",
+          border: OutlineInputBorder(),
+        ),
+    );
+  }
+
+  Widget messageField(){
+    return TextFormField(
+        maxLines: null,
+        keyboardType: TextInputType.multiline,
+        decoration: InputDecoration(
+          labelText: "Enter Your Message",
+          hintText: "Hi, How are you?",
+          border: OutlineInputBorder()
+        ),
     );
   }
 }
