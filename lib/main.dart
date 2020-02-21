@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DirectWA',
+      title: 'Direct Chat',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.teal,
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 15.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)))),
-      home: MyHomePage(title: 'DirectWA'),
+      home: MyHomePage(title: 'Direct Chat'),
     );
   }
 }
