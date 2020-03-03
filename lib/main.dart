@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final formKey = GlobalKey<FormState>();
 
   //Global Key to Access Scafold State
+
   final scafoldKey = GlobalKey<ScaffoldState>();
 
   //Form Data 
@@ -191,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       margin: EdgeInsets.only(top: 10.0),
       child: TextFormField(
-        maxLines: null,
+        maxLines: 4,
         minLines: 4,
         keyboardType: TextInputType.multiline,
         decoration: InputDecoration(
