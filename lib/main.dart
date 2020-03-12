@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,7 +47,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   //Global Key TO Access Form State
   final formKey = GlobalKey<FormState>();
 
@@ -55,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final scafoldKey = GlobalKey<ScaffoldState>();
 
-  //Form Data 
+  //Form Data
   String phoneNumber;
   String message;
 
@@ -139,7 +138,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
 //Widgets
   Widget logo() {
     return Image.asset(
@@ -192,8 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       margin: EdgeInsets.only(top: 10.0),
       child: TextFormField(
-        maxLines: 4,
-        minLines: 4,
+        maxLines: 3,
+        minLines: 3,
         keyboardType: TextInputType.multiline,
         decoration: InputDecoration(
           // labelText: "Enter Your Message",
