@@ -46,7 +46,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 RaisedButton(
                   onPressed: () async {
-                    String wpUrl = "https://apps.hindblogger.in/directchat/privacy";
+                    String wpUrl = "https://directwa.foxflue.com/privacy";
                     if (await canLaunch(wpUrl)) {
                       await launch(wpUrl);
                       print(wpUrl);
@@ -64,7 +64,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                     onTap: () async {
-                      String wpUrl = "https://apps.hindblogger.in/directchat/";
+                      String wpUrl = "https://directwa.foxflue.com/";
                       if (await canLaunch(wpUrl)) {
                         await launch(wpUrl);
                         print(wpUrl);
@@ -73,7 +73,7 @@ class AboutScreen extends StatelessWidget {
                       }
                     },
                     child: Text(
-                      "Crafted with ❤️ by Hind Blogger",
+                      "Crafted with ❤️ by Foxflue",
                       textAlign: TextAlign.center,
                     )),
               ],
