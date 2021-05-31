@@ -44,7 +44,8 @@ class AboutScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
-                RaisedButton(
+                FlatButton(
+                  // color: Theme.of(context).primaryColor,
                   onPressed: () async {
                     String wpUrl = "https://directwa.foxflue.com/privacy";
                     if (await canLaunch(wpUrl)) {
@@ -56,7 +57,7 @@ class AboutScreen extends StatelessWidget {
                   },
                   child: Text(
                     "Privacy Policy",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Theme.of(context).accentColor),
                   ),
                 ),
                 SizedBox(
