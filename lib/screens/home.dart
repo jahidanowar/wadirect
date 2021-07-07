@@ -1,5 +1,7 @@
+import 'package:directwp/models/Contact.dart';
 import 'package:directwp/screens/about.dart';
 import 'package:directwp/screens/help.dart';
+import 'package:directwp/services/ContactHistory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,6 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Function to send message
   _sendMessage() async {
+    ContactHistory ch =
+        new ContactHistory(contact: Contact(number: '123', message: 'message'));
+    ch.save();
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
       // String wpUrl = "https://api.whatsapp.com/send?phone=$phoneNumber&text=$message";
@@ -172,6 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (value.contains('+')) {
             return "Remove the + sign";
           }
+          return null;
         },
         onSaved: (String value) {
           phoneNumber = value;
@@ -197,6 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (value.length >= 500) {
             return "Maximum 100 Character Allowed";
           }
+          return null;
         },
         onSaved: (String value) {
           message = value;
@@ -208,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget submitButton() {
     return SizedBox(
       width: double.infinity,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: _sendMessage,
         child: Text(
           "Send Message",
