@@ -20,22 +20,23 @@ class MyApp extends StatelessWidget {
       title: 'Direct Chat',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.teal,
-          inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderSide: BorderSide(width: 0.0, style: BorderStyle.none),
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(5.0),
-              ),
+        primarySwatch: Colors.teal,
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(width: 0.0, style: BorderStyle.none),
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(5.0),
             ),
           ),
-          buttonTheme: ButtonThemeData(
-              buttonColor: Colors.teal,
-              padding: EdgeInsets.symmetric(vertical: 15.0),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)))),
+        ),
+        buttonTheme: ButtonThemeData(
+            buttonColor: Colors.teal,
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+      ),
       initialRoute: '/',
       routes: {
         TabScreen.routeName: (ctx) => TabScreen(),

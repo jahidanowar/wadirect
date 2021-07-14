@@ -44,7 +44,7 @@ class DbProvider {
   }
 
   // Delete item
-  Future<void> deleteItem(int id) {
-    this.db.query("contacts", where: "id = ?", whereArgs: [id]);
+  Future<int> deleteItem(int id) {
+    return this.db.delete("contacts", where: "id = ?", whereArgs: [id]);
   }
 }
