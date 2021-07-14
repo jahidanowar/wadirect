@@ -22,6 +22,7 @@ class DbProvider {
           id INTEGER PRIMARY KEY,
           number TEXT,
           message LONGTEXT
+          createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
         )
       """);
       },

@@ -3,6 +3,7 @@ import 'package:directwp/screens/about.dart';
 import 'package:directwp/screens/help.dart';
 import 'package:directwp/services/DbProvider.dart';
 import 'package:directwp/utils/sendMessage.dart';
+import 'package:directwp/utils/trimWhiteSpaces.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   _saveData(number, message) async {
     var dbProvider = DbProvider();
     await dbProvider.init();
-    dbProvider.insertItem(Contact(number: number, message: message));
+    dbProvider
+        .insertItem(Contact(number: trimWhiteSpaces(number), message: message));
     // print(dbProvider.insertItem(Contact(number: number, message: message)));
     // print(Contact(number: number, message: message).toMap());
     // print(await dbProvider.fetchItems());
