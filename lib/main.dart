@@ -1,3 +1,7 @@
+import 'package:directwp/screens/about.dart';
+import 'package:directwp/screens/help.dart';
+import 'package:directwp/screens/history.dart';
+import 'package:directwp/screens/tabScreen.dart';
 import 'package:flutter/material.dart';
 /* Scrrens */
 import 'package:directwp/screens/home.dart';
@@ -32,7 +36,14 @@ class MyApp extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 15.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)))),
-      home: MyHomePage(title: 'Direct Chat'),
+      initialRoute: '/',
+      routes: {
+        TabScreen.routeName: (ctx) => TabScreen(),
+        MyHomePage.routeName: (ctx) => MyHomePage(),
+        HistoryScreen.routeName: (ctx) => HistoryScreen(),
+        HelpScreen.routeName: (ctx) => HelpScreen(),
+        AboutScreen.routeName: (ctx) => AboutScreen()
+      },
     );
   }
 }
