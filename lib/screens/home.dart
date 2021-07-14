@@ -117,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _copyLink,
         tooltip: 'Copy Chat Link',
-        child: Icon(Icons.content_copy),
+        child: Icon(Icons.content_copy_rounded),
       ),
     );
   }
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //Widgets
   Widget helpActionButton() {
     return IconButton(
-      icon: Icon(Icons.help_outline),
+      icon: Icon(Icons.help_outline_rounded),
       tooltip: "Helps",
       onPressed: () {
         Navigator.push(
@@ -136,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget aboutActionButton() {
     return IconButton(
-      icon: Icon(Icons.more_vert),
+      icon: Icon(Icons.more_vert_rounded),
       tooltip: "About",
       onPressed: () {
         Navigator.push(
