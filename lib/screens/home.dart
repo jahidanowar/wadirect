@@ -1,13 +1,15 @@
+import 'package:directwp/models/Contact.dart';
 import 'package:directwp/screens/about.dart';
 import 'package:directwp/screens/help.dart';
+import 'package:directwp/services/DbProvider.dart';
+import 'package:directwp/utils/sendMessage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  static final routeName = "/home";
 
-  final String title;
+  const MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -18,25 +20,33 @@ class _MyHomePageState extends State<MyHomePage> {
   final formKey = GlobalKey<FormState>();
 
   //Global Key to Access Scafold State
-
   final scafoldKey = GlobalKey<ScaffoldState>();
 
   //Form Data
   String phoneNumber;
   String message;
 
+  _saveData(number, message) async {
+    var dbProvider = DbProvider();
+    await dbProvider.init();
+    dbProvider.insertItem(Contact(number: number, message: message));
+    // print(dbProvider.insertItem(Contact(number: number, message: message)));
+    // print(Contact(number: number, message: message).toMap());
+    // print(await dbProvider.fetchItems());
+  }
+
   // Function to send message
   _sendMessage() async {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
-      // String wpUrl = "https://api.whatsapp.com/send?phone=$phoneNumber&text=$message";
-      String wpUrl = "https://wa.me/$phoneNumber?text=$message";
+      // Save Data
+      _saveData(phoneNumber, message);
+      // Redirect to whatsapp
 
-      if (await canLaunch(wpUrl)) {
-        await launch(wpUrl);
-        print(wpUrl);
-      } else {
-        throw "Coudn't Launch the $wpUrl";
+      var messageSent =
+          await sendMessage(number: phoneNumber, message: message);
+      if (!messageSent) {
+        throw "Coudn't Launch the $phoneNumber";
       }
     }
   }
@@ -45,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _copyLink() {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
+      _saveData(phoneNumber, message);
       String wpUrl =
           "https://api.whatsapp.com/send?phone=$phoneNumber&text=$message";
       Clipboard.setData(ClipboardData(text: wpUrl));
@@ -62,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: scafoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Direct Chat'),
         centerTitle: true,
         actions: <Widget>[
           helpActionButton(),
@@ -110,7 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 //Widgets
-
   Widget helpActionButton() {
     return IconButton(
       icon: Icon(Icons.help_outline),
@@ -172,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (value.contains('+')) {
             return "Remove the + sign";
           }
+          return null;
         },
         onSaved: (String value) {
           phoneNumber = value;
@@ -197,6 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (value.length >= 500) {
             return "Maximum 100 Character Allowed";
           }
+          return null;
         },
         onSaved: (String value) {
           message = value;
@@ -208,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget submitButton() {
     return SizedBox(
       width: double.infinity,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: _sendMessage,
         child: Text(
           "Send Message",
