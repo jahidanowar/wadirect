@@ -16,13 +16,15 @@ class DbProvider {
       path,
       version: 1,
       onCreate: (Database newDb, int version) {
+        print('New Db');
         // Run some SQL
+        newDb.execute('DROP TABLE If EXISTS contacts');
         newDb.execute("""
         CREATE TABLE contacts (
           id INTEGER PRIMARY KEY,
           number TEXT,
-          message LONGTEXT
-          createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+          message LONGTEXT,
+          createdAt INTEGER
         )
       """);
       },
@@ -41,6 +43,8 @@ class DbProvider {
 
   // Insert Item
   Future<int> insertItem(Contact contact) {
+    contact.createdAt = DateTime.now().millisecondsSinceEpoch;
+    print(contact.toMap());
     return this.db.insert('contacts', contact.toMap());
   }
 

@@ -1,5 +1,6 @@
 import 'package:directwp/models/Contact.dart';
 import 'package:directwp/services/DbProvider.dart';
+import 'package:directwp/utils/formatTimestamp.dart';
 import 'package:directwp/utils/sendMessage.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   void _getHistory() async {
     await dbProvider.init();
     List<Map> contacts = await dbProvider.fetchItems();
+    print(contacts);
     if (contacts != null && contacts.length > 0) {
       setState(() {
         _contacts = contacts.map((e) => Contact.fromMap(e)).toList();
@@ -67,17 +69,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       title: Text(_contacts[index].number),
                       subtitle: Text(_contacts[index].message),
                       horizontalTitleGap: 10.0,
-                      trailing: IconButton(
-                        color: Theme.of(context).accentColor,
-                        icon: Icon(
-                          Icons.north_east_rounded,
-                        ),
-                        onPressed: () {
-                          print(_contacts[index].number);
-                          sendMessage(
-                              number: _contacts[index].number,
-                              message: _contacts[index].message);
-                        },
+                      trailing: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 12,
+                        children: <Widget>[
+                          Icon(
+                            Icons.query_builder_rounded,
+                          ),
+                          Text(formatTimeStamp(_contacts[index].createdAt))
+                        ],
                       ),
                     ),
                   ),
@@ -91,7 +91,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 }
 
 Widget slideRightBackground() {
-  return Container(
+  return Card(
     color: Colors.green,
     child: Align(
       alignment: Alignment.centerLeft,
@@ -114,7 +114,7 @@ Widget slideRightBackground() {
 }
 
 Widget slideLeftBackground() {
-  return Container(
+  return Card(
     color: Colors.red,
     child: Align(
       alignment: Alignment.centerRight,
