@@ -1,7 +1,6 @@
 import 'package:directwp/models/Contact.dart';
 import 'package:directwp/services/DbProvider.dart';
 import 'package:directwp/utils/sendMessage.dart';
-import 'package:directwp/widgets/bottomNavigation.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatefulWidget {

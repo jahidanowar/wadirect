@@ -42,4 +42,9 @@ class DbProvider {
   Future<int> insertItem(Contact contact) {
     return this.db.insert('contacts', contact.toMap());
   }
+
+  // Delete item
+  Future<void> deleteItem(int id) {
+    this.db.query("contacts", where: "id = ?", whereArgs: [id]);
+  }
 }
