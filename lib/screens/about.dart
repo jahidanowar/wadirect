@@ -45,10 +45,10 @@ class AboutScreen extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
-                FlatButton(
+                TextButton(
                   // color: Theme.of(context).primaryColor,
                   onPressed: () async {
-                    String wpUrl = "https://directwa.foxflue.com/privacy";
+                    String wpUrl = "https://wadirect.pages.dev/privacy";
                     if (await canLaunch(wpUrl)) {
                       await launch(wpUrl);
                       print(wpUrl);
