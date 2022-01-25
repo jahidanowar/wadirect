@@ -66,7 +66,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   secondaryBackground: slideLeftBackground(),
                   child: Card(
                     child: ListTile(
-                      title: Text(_contacts[index].number),
+                      // Eclude the first two characters from the number
+                      title: Text(_contacts[index].number.substring(2)),
                       subtitle: Text(_contacts[index].message),
                       horizontalTitleGap: 10.0,
                       trailing: Wrap(

@@ -71,14 +71,7 @@ class HelpScreen extends StatelessWidget {
                   height: 8.0,
                 ),
                 Text(
-                  "My Country Code: +91",
-                  style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Text(
-                  "I have to Enter the Number as: 91768483016",
+                  "I have to Enter the Number as: 768483016",
                   style: TextStyle(
                       color: Colors.teal,
                       fontSize: 15.0,

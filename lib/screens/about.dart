@@ -48,7 +48,7 @@ class AboutScreen extends StatelessWidget {
                 TextButton(
                   // color: Theme.of(context).primaryColor,
                   onPressed: () async {
-                    String wpUrl = "https://wadirect.pages.dev/privacy";
+                    String wpUrl = "https://whatsweb.netlify.app/privacy";
                     if (await canLaunch(wpUrl)) {
                       await launch(wpUrl);
                       print(wpUrl);
@@ -66,7 +66,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                     onTap: () async {
-                      String wpUrl = "https://directwa.foxflue.com/";
+                      String wpUrl = "https://whatsweb.netlify.app/";
                       if (await canLaunch(wpUrl)) {
                         await launch(wpUrl);
                         print(wpUrl);
